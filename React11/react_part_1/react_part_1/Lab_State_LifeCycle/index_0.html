@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft JhengHei', "Microsoft YaHei", STHeiti, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+
+        // // 一層包一層
+        // function Clock(props) {
+        //     return (
+        //         <div>
+        //             <h1>Hello, world!</h1>
+        //             <h2>It is {props.date.toLocaleTimeString()}</h2>
+        //         </div>
+        //     );
+        // }
+
+        // function tick() {
+        //     ReactDOM.render(
+        //         <Clock date={new Date()} />,
+        //         document.getElementById('root')
+        //     );
+        // }
+
+        // setInterval(tick, 1000);
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = { date: new Date()};
+            }
+        
+            componentDidMount() {
+                this.timerId = setInterval( () => {
+                    // A方法
+                    // this.setState({ date: new Date() });
+                    
+                    // B方法
+                    this.state.date = new Date();
+                    this.setState({});
+                    
+                    // C方法
+                    var newState = {...this.state};
+                    newState.date = new Date();
+                    this.setState(newState);
+                    
+                    
+                    console.log(this.state.date);
+                }, 1000);
+            }
+
+            componentWillUnmount() {
+                clearInterval(this.timerId);
+            }
+
+            render(){
+                return (
+                    <div>
+                        <h1>Hello, world!</h1>
+                        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+                    </div>
+                );
+            }
+
+        }
+            ReactDOM.render(
+                <Clock />,
+                document.getElementById('root')
+            )
+
+    </script>
+
+</body>
+
+</html>

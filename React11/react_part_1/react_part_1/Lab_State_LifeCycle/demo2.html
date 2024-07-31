@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="report"></div>
+    <script>
+      // var x = 111;
+      // var y = x;
+      // y = 200;
+      // report.innerText = x;  // 111
+
+      // var x = {
+      //     data: 100
+      // }
+      // var y = x;
+      // y.data = 200;
+      // report.innerText = x.data;
+
+      // var x = { data: 100 }
+      // var y = {...x};
+      // y.data = 200;
+      // report.innerText = x.data;
+
+      // var dataList = [1, 2, 3, 4];
+      // var dataList2 = [100, ...dataList, 200, 300];
+      // report.innerText = dataList2.join(" | ");
+
+      // var dataList1 = [1, 3, 5, 7, 9,11];
+      // var dataList2 = [0, 2, 4, 6, 8];
+      // var result = [...dataList1,...dataList2];  // ???
+      // report.innerText = result;
+
+      
+      var dataList1 = [1, 3, 5, 7, 9];
+      var dataList2 = [0, 2, 4, 6, 8];
+      var result = []; // 创建一个空数组来存放合并后的结果
+      // 遍历dataList1，并将每个元素添加到result数组中
+      for (var i = 0; i < dataList1.length; i++) {
+        result.push(dataList2[i]);
+        result.push(dataList1[i]);
+      }
+      report.innerText = result;
+
+    </script>
+  </body>
+</html>
